@@ -1,12 +1,19 @@
 package steps;
 
 import config.UserConfig;
+import impl.AuthServiceImpl;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import models.api.User;
+import org.junit.jupiter.api.Assertions;
 import pages.SignInPage;
+import services.AuthService;
+
+import static app_context.RunContext.*;
 
 public class SignInPageDef {
     SignInPage signInPage = new SignInPage();
+    AuthService authService = new AuthServiceImpl();
 
     @When("Input user email")
     public void inputUserEmail() {
@@ -32,5 +39,13 @@ public class SignInPageDef {
     @Then("Validation error below Password field should be displayed")
     public void checkPasswordErrorMessage() {
         signInPage.isPasswordErrorMessageDisplayed();
+    }
+
+    @Then("Login user by API")
+    public void loginUserByAPI() {
+        User user = get("user", User.class);
+        User userLogged = authService.login(user);
+        Assertions.assertNotNull(userLogged);
+
     }
 }

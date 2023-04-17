@@ -1,4 +1,5 @@
 Feature: Create account
+  @UI
   Scenario: Successful create new user by UI
     Given The home page is opened
     When Open "sign-up" page
@@ -9,7 +10,7 @@ Feature: Create account
     When Input user password
     When Click "Start learning" button
     Then Registration first name should be displayed in header
-
+@UI
   Scenario: Check validation messages for all fields
     Given The home page is opened
     When Open "sign-up" page
@@ -23,5 +24,7 @@ Feature: Create account
     Then Last Name validation message should be correct
     Then Password validation message should be correct
 
-  Scenario: Successful creating user by API
+    @API
+  Scenario: Login for user whom was created by API
     When Create user by API
+    Then Login user by API

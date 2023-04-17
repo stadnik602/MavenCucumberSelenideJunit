@@ -1,5 +1,6 @@
 package steps;
 
+import app_context.RunContext;
 import config.UserConfig;
 import impl.AuthServiceImpl;
 import io.cucumber.java.en.Then;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import pages.SignUpPage;
 import services.AuthService;
 
-import static app_context.RunContext.put;
+import static app_context.RunContext.*;
 
 public class SignUpDef {
     SignUpPage signUpPage = new SignUpPage();
@@ -92,8 +93,12 @@ public class SignUpDef {
                 .password(UserConfig.USER_PASSWORD)
                 .rememberMe(true)
                 .build();
+        put("user", newUser);
 
         User createdUser = authService.createUser(newUser);
         Assertions.assertNotNull(createdUser);
+        Assertions.assertEquals(newUser.getEmail().toLowerCase(), createdUser.getEmail().toLowerCase());
+        Assertions.assertNotNull(createdUser.getId());
+        System.out.println();
     }
 }

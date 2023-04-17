@@ -1,5 +1,6 @@
 Feature: Login user
 
+  @UI
   Scenario: Successful login user by UI
     Given The home page is opened
     When Click "Log In" button in the header
@@ -10,4 +11,3 @@ Feature: Login user
 
 #  Scenario: Successful login user by API
 #    When Login user by API
-#    Then User is logged in by API
