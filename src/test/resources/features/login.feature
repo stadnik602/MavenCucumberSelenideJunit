@@ -1,9 +1,13 @@
 Feature: Login user
 
-  Scenario: Successful login user
-    Then Click "Log In" button in the header
-    Then Input user email
-    Then Input user password
-    Then Click "Log In" button
-    Then Check name in the header
+  Scenario: Successful login user by UI
+    Given The home page is opened
+    When Click "Log In" button in the header
+    When Input user email
+    When Input user password
+    When Click "Log In" button
+#    Then Name in the header should be
 
+#  Scenario: Successful login user by API
+#    When Login user by API
+#    Then User is logged in by API

@@ -9,5 +9,8 @@
         <module name="MavenCucumberAllure" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MavenCucumberSelenideJunit" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
